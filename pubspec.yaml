@@ -41,7 +41,7 @@ flutter:
   fonts:
     - family: Lexend
       fonts:
-        - asset: assets/fonts/Lexend-VariableFont_wght.ttf
+        - asset: assets/fonts/Lexend.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
