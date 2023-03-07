@@ -1,4 +1,5 @@
 import 'package:design_leveling/app/shared/constants/routes_const.dart';
+import 'package:design_leveling/app/shared/widgets/appbar/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -14,16 +15,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     int selectedIndex = 0;
 
-    void _onItemTapped(int index) {
+    void onItemTapped(int index) {
       setState(() {
         selectedIndex = index;
       });
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sys Móveis'),
-      ),
+      appBar: const DefaultAppBar(),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -57,7 +56,7 @@ class _HomePageState extends State<HomePage> {
           if (selectedIndex == 2) {
             Modular.to.navigate(RoutesConst.login);
           } else {
-            _onItemTapped(selectedIndex);
+            onItemTapped(selectedIndex);
           }
         },
       ),
