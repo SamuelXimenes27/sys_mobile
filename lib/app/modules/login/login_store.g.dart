@@ -9,40 +9,61 @@ part of 'login_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$LoginStore on _LoginStoreBase, Store {
-  late final _$valueAtom =
-      Atom(name: '_LoginStoreBase.value', context: context);
+  late final _$emailInputControllerAtom =
+      Atom(name: '_LoginStoreBase.emailInputController', context: context);
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  TextEditingController get emailInputController {
+    _$emailInputControllerAtom.reportRead();
+    return super.emailInputController;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set emailInputController(TextEditingController value) {
+    _$emailInputControllerAtom.reportWrite(value, super.emailInputController,
+        () {
+      super.emailInputController = value;
     });
   }
 
-  late final _$_LoginStoreBaseActionController =
-      ActionController(name: '_LoginStoreBase', context: context);
+  late final _$keyLoginFormAtom =
+      Atom(name: '_LoginStoreBase.keyLoginForm', context: context);
 
   @override
-  void increment() {
-    final _$actionInfo = _$_LoginStoreBaseActionController.startAction(
-        name: '_LoginStoreBase.increment');
-    try {
-      return super.increment();
-    } finally {
-      _$_LoginStoreBaseActionController.endAction(_$actionInfo);
-    }
+  GlobalKey<FormState> get keyLoginForm {
+    _$keyLoginFormAtom.reportRead();
+    return super.keyLoginForm;
+  }
+
+  @override
+  set keyLoginForm(GlobalKey<FormState> value) {
+    _$keyLoginFormAtom.reportWrite(value, super.keyLoginForm, () {
+      super.keyLoginForm = value;
+    });
+  }
+
+  late final _$isObscureAtom =
+      Atom(name: '_LoginStoreBase.isObscure', context: context);
+
+  @override
+  bool get isObscure {
+    _$isObscureAtom.reportRead();
+    return super.isObscure;
+  }
+
+  @override
+  set isObscure(bool value) {
+    _$isObscureAtom.reportWrite(value, super.isObscure, () {
+      super.isObscure = value;
+    });
   }
 
   @override
   String toString() {
     return '''
-value: ${value}
+emailInputController: ${emailInputController},
+keyLoginForm: ${keyLoginForm},
+isObscure: ${isObscure}
     ''';
   }
 }
