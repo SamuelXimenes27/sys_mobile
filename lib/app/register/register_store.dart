@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
 part 'register_store.g.dart';
@@ -6,10 +7,18 @@ class RegisterStore = _RegisterStoreBase with _$RegisterStore;
 
 abstract class _RegisterStoreBase with Store {
   @observable
-  int value = 0;
+  TextEditingController emailInputController = TextEditingController();
 
-  @action
-  void increment() {
-    value++;
-  }
+  @observable
+  TextEditingController passwordInputController = TextEditingController();
+
+  @observable
+  TextEditingController confirmPasswordInputController =
+      TextEditingController();
+
+  @observable
+  var keyRegisterForm = GlobalKey<FormState>();
+
+  @observable
+  bool isObscure = true;
 }
