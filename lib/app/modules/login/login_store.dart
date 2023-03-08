@@ -36,7 +36,7 @@ abstract class _LoginStoreBase with Store {
         log('User is currently signed out!');
       } else {
         log('User is signed in!');
-        Navigator.pushNamed(context, RoutesConst.home);
+        Navigator.pushReplacementNamed(context, RoutesConst.home);
       }
     });
   }
