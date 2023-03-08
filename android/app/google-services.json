@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "981282725746",
+    "project_id": "sys-moveis",
+    "storage_bucket": "sys-moveis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981282725746:android:0c0d8396b069aa005807eb",
+        "android_client_info": {
+          "package_name": "com.example.design_leveling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981282725746-g3cslo5h6mvle6lrhrehrdf2e9hsm6ln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_twzsSi_sl4Wo96J8cikLBHC244nOsYo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981282725746-g3cslo5h6mvle6lrhrehrdf2e9hsm6ln.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
