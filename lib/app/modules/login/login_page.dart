@@ -1,4 +1,5 @@
 import 'package:design_leveling/app/shared/constants/colors_const.dart';
+import 'package:design_leveling/app/shared/constants/routes_const.dart';
 import 'package:design_leveling/app/shared/constants/string_const.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
@@ -146,34 +147,52 @@ class LoginPageState extends State<LoginPage> {
                                     },
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 12),
-                                  child: SizedBox(
-                                    width: 290,
-                                    height: 50,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            const Color(0xff3B66A4),
-                                      ),
-                                      child: const Text(
-                                        StringConst.login,
+                                Container(
+                                  width: size.width * 1,
+                                  height: size.height * 0.035,
+                                  alignment: Alignment.centerRight,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, RoutesConst.register);
+                                    },
+                                    child: RichText(
+                                      text: const TextSpan(
+                                        text:
+                                            'Ainda não tem conta? Cadastre-se',
                                         style: TextStyle(
-                                          fontSize: 20,
+                                          color: ColorsConst.black100,
                                         ),
                                       ),
-                                      onPressed: () {
-                                        if (store.keyLoginForm.currentState!
-                                            .validate()) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            const SnackBar(
-                                                content:
-                                                    Text('Processing Data')),
-                                          );
-                                        }
-                                      },
                                     ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                SizedBox(
+                                  width: 290,
+                                  height: 50,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color(0xff3B66A4),
+                                    ),
+                                    child: const Text(
+                                      StringConst.login,
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      if (store.keyLoginForm.currentState!
+                                          .validate()) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                              content: Text('Processing Data')),
+                                        );
+                                      }
+                                    },
                                   ),
                                 )
                               ],
