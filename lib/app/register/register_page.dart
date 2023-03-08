@@ -102,6 +102,8 @@ class RegisterPageState extends State<RegisterPage> {
                                     if (store
                                         .emailInputController.text.isEmpty) {
                                       return StringConst.emptyEmail;
+                                    } else if (store.emailAlreadyUsed == true) {
+                                      return StringConst.emailAlreadyUsed;
                                     }
                                     return null;
                                   },
@@ -136,6 +138,8 @@ class RegisterPageState extends State<RegisterPage> {
                                   validator: (value) {
                                     if (value!.isEmpty) {
                                       return StringConst.emptyPassword;
+                                    } else if (store.isWeakPassword == true) {
+                                      return StringConst.weakPassword;
                                     }
                                     return null;
                                   },
@@ -170,10 +174,11 @@ class RegisterPageState extends State<RegisterPage> {
                                   validator: (value) {
                                     if (value!.isEmpty) {
                                       return StringConst.emptyPassword;
-                                    }
-                                    if (value !=
+                                    } else if (value !=
                                         store.passwordInputController.text) {
                                       return StringConst.mismatchPassword;
+                                    } else if (store.isWeakPassword == true) {
+                                      return StringConst.weakPassword;
                                     }
                                     return null;
                                   },
@@ -200,10 +205,34 @@ class RegisterPageState extends State<RegisterPage> {
                                   onPressed: () {
                                     if (store.keyRegisterForm.currentState!
                                         .validate()) {
+                                      store.createAccount();
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         const SnackBar(
-                                            content: Text('Processing Data')),
+                                            backgroundColor:
+                                                ColorsConst.white20,
+                                            content: Text(
+                                                StringConst.processingData)),
+                                      );
+                                      Future.delayed(const Duration(seconds: 1),
+                                          () {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            backgroundColor:
+                                                ColorsConst.infoColor1,
+                                            content: Text(
+                                              StringConst.registerComplete,
+                                            ),
+                                          ),
+                                        );
+                                      }).then(
+                                        (value) => Future.delayed(
+                                          const Duration(seconds: 3),
+                                          () {
+                                            Navigator.pop(context);
+                                          },
+                                        ),
                                       );
                                     }
                                   },

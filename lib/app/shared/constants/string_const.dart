@@ -11,9 +11,14 @@ class StringConst {
   static const register = "Cadastro";
   static const confirmPassword = "Confirme sua senha";
   static const makeRegister = "Cadastrar";
+  static const registerComplete = "Cadastro feito com sucesso";
+
+  static const processingData = "Processando dados...";
 
   // Errors
   static const emptyEmail = "Preencha com seu email!";
   static const emptyPassword = "Preencha com sua senha!";
   static const mismatchPassword = "As senhas estão diferentes";
+  static const weakPassword = "A senha é muito fraca!";
+  static const emailAlreadyUsed = "O email já é cadastrado";
 }
