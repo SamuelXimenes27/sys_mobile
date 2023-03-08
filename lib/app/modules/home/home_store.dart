@@ -1,14 +1,25 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
+
+import '../../shared/constants/routes_const.dart';
 
 part 'home_store.g.dart';
 
 class HomeStore = HomeStoreBase with _$HomeStore;
 
 abstract class HomeStoreBase with Store {
-  @observable
-  int counter = 0;
-
-  Future<void> increment() async {
-    counter = counter + 1;
+  @action
+  checkIsLogged(context) {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        log('User is currently signed out!');
+        Navigator.pushNamed(context, RoutesConst.login);
+      } else {
+        log('User is signed in!');
+      }
+    });
   }
 }

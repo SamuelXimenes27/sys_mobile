@@ -21,4 +21,6 @@ class StringConst {
   static const mismatchPassword = "As senhas estão diferentes";
   static const weakPassword = "A senha é muito fraca!";
   static const emailAlreadyUsed = "O email já é cadastrado";
+  static const emailDoesNotExist = "Este email não está cadastrado";
+  static const wrongPassword = "A senha está errada!";
 }

@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:design_leveling/app/shared/constants/colors_const.dart';
 import 'package:design_leveling/app/shared/constants/routes_const.dart';
 import 'package:design_leveling/app/shared/constants/string_const.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +25,7 @@ class LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
+    store.checkIsLogged(context);
   }
 
   @override
@@ -85,7 +89,7 @@ class LoginPageState extends State<LoginPage> {
                         ),
                         SizedBox(
                           width: 292,
-                          height: 243,
+                          height: 266,
                           child: Form(
                             key: store.keyLoginForm,
                             child: Column(
@@ -107,6 +111,8 @@ class LoginPageState extends State<LoginPage> {
                                       if (store
                                           .emailInputController.text.isEmpty) {
                                         return StringConst.emptyEmail;
+                                      } else if (store.noUserFound == true) {
+                                        return StringConst.emailDoesNotExist;
                                       }
                                       return null;
                                     },
@@ -142,9 +148,12 @@ class LoginPageState extends State<LoginPage> {
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return StringConst.emptyPassword;
+                                      } else if (store.wrongPassword == true) {
+                                        return StringConst.wrongPassword;
                                       }
                                       return null;
                                     },
+                                    controller: store.passwordInputController,
                                   ),
                                 ),
                                 Container(
@@ -186,6 +195,9 @@ class LoginPageState extends State<LoginPage> {
                                     onPressed: () {
                                       if (store.keyLoginForm.currentState!
                                           .validate()) {
+                                        store.makeLogin();
+                                        log(store.emailInputController.text);
+                                        log(store.passwordInputController.text);
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           const SnackBar(
@@ -194,7 +206,7 @@ class LoginPageState extends State<LoginPage> {
                                       }
                                     },
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),

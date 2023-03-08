@@ -93,6 +93,46 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     });
   }
 
+  late final _$isWeakPasswordAtom =
+      Atom(name: '_RegisterStoreBase.isWeakPassword', context: context);
+
+  @override
+  bool get isWeakPassword {
+    _$isWeakPasswordAtom.reportRead();
+    return super.isWeakPassword;
+  }
+
+  @override
+  set isWeakPassword(bool value) {
+    _$isWeakPasswordAtom.reportWrite(value, super.isWeakPassword, () {
+      super.isWeakPassword = value;
+    });
+  }
+
+  late final _$emailAlreadyUsedAtom =
+      Atom(name: '_RegisterStoreBase.emailAlreadyUsed', context: context);
+
+  @override
+  bool get emailAlreadyUsed {
+    _$emailAlreadyUsedAtom.reportRead();
+    return super.emailAlreadyUsed;
+  }
+
+  @override
+  set emailAlreadyUsed(bool value) {
+    _$emailAlreadyUsedAtom.reportWrite(value, super.emailAlreadyUsed, () {
+      super.emailAlreadyUsed = value;
+    });
+  }
+
+  late final _$createAccountAsyncAction =
+      AsyncAction('_RegisterStoreBase.createAccount', context: context);
+
+  @override
+  Future createAccount() {
+    return _$createAccountAsyncAction.run(() => super.createAccount());
+  }
+
   @override
   String toString() {
     return '''
@@ -100,7 +140,9 @@ emailInputController: ${emailInputController},
 passwordInputController: ${passwordInputController},
 confirmPasswordInputController: ${confirmPasswordInputController},
 keyRegisterForm: ${keyRegisterForm},
-isObscure: ${isObscure}
+isObscure: ${isObscure},
+isWeakPassword: ${isWeakPassword},
+emailAlreadyUsed: ${emailAlreadyUsed}
     ''';
   }
 }
