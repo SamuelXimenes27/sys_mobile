@@ -54,7 +54,7 @@ class RegisterPageState extends State<RegisterPage> {
               child: Padding(
                 padding: EdgeInsets.only(top: size.height * 0.3),
                 child: Container(
-                  height: size.height * 0.57,
+                  height: size.height * 0.65,
                   width: size.width * 0.85,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -80,17 +80,41 @@ class RegisterPageState extends State<RegisterPage> {
                       ),
                       SizedBox(
                         width: 292,
-                        height: 343,
+                        height: 400,
                         child: Form(
                           key: store.keyRegisterForm,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(top: 15),
+                                padding: const EdgeInsets.only(top: 10),
                                 child: TextFormField(
                                   decoration: const InputDecoration(
-                                    errorStyle: TextStyle(height: 0.5),
+                                    errorStyle: TextStyle(height: 0.3),
+                                    hintText: StringConst.userName,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(4),
+                                      ),
+                                    ),
+                                  ),
+                                  validator: (value) {
+                                    if (store
+                                        .emailInputController.text.isEmpty) {
+                                      return StringConst.emptyEmail;
+                                    } else if (store.emailAlreadyUsed == true) {
+                                      return StringConst.emailAlreadyUsed;
+                                    }
+                                    return null;
+                                  },
+                                  controller: store.userNameInputController,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: TextFormField(
+                                  decoration: const InputDecoration(
+                                    errorStyle: TextStyle(height: 0.3),
                                     hintText: StringConst.email,
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.all(
@@ -111,12 +135,11 @@ class RegisterPageState extends State<RegisterPage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 20),
+                                padding: const EdgeInsets.only(top: 10),
                                 child: TextFormField(
                                   obscureText: store.isObscure,
                                   decoration: InputDecoration(
-                                    errorStyle: const TextStyle(
-                                        fontSize: 12, height: 0.5),
+                                    errorStyle: const TextStyle(height: 0.3),
                                     border: const OutlineInputBorder(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(4)),
@@ -147,12 +170,11 @@ class RegisterPageState extends State<RegisterPage> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 20),
+                                padding: const EdgeInsets.only(top: 10),
                                 child: TextFormField(
                                   obscureText: store.isObscure,
                                   decoration: InputDecoration(
-                                    errorStyle: const TextStyle(
-                                        fontSize: 12, height: 0.5),
+                                    errorStyle: const TextStyle(height: 0.3),
                                     border: const OutlineInputBorder(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(4)),

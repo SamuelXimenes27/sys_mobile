@@ -8,6 +8,7 @@ class StringConst {
   static const login = 'Entrar';
 
   // Register Module
+  static const userName = "Usuário";
   static const register = "Cadastro";
   static const confirmPassword = "Confirme sua senha";
   static const makeRegister = "Cadastrar";

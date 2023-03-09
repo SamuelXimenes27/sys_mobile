@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 
@@ -16,15 +17,31 @@ class DefaultAppBar extends StatelessWidget with PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(148);
 }
 
-class ListTileAppBar extends StatelessWidget {
+class ListTileAppBar extends StatefulWidget {
   const ListTileAppBar({Key? key}) : super(key: key);
 
   @override
+  State<ListTileAppBar> createState() => _ListTileAppBarState();
+}
+
+class _ListTileAppBarState extends State<ListTileAppBar> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  @override
   Widget build(BuildContext context) {
+    User? currentUser = _auth.currentUser;
+    String? displayName;
+
+    if (currentUser != null) {
+      displayName = currentUser.displayName;
+
+      displayName ??= 'Usuário Desconhecido';
+    }
+
     return ListTile(
-      title: const Text(
-        'Olá, Cb. Hélio',
-        style: TextStyle(color: Colors.white, fontSize: 18),
+      title: Text(
+        'Olá, $displayName',
+        style: const TextStyle(color: Colors.white, fontSize: 18),
       ),
       subtitle: Row(
         children: const [

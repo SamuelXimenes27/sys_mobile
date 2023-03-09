@@ -15,6 +15,9 @@ abstract class _RegisterStoreBase with Store {
   TextEditingController passwordInputController = TextEditingController();
 
   @observable
+  TextEditingController userNameInputController = TextEditingController();
+
+  @observable
   TextEditingController confirmPasswordInputController =
       TextEditingController();
 
@@ -33,11 +36,14 @@ abstract class _RegisterStoreBase with Store {
   @action
   createAccount() async {
     try {
-      final credential =
+      UserCredential userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailInputController.text,
         password: passwordInputController.text,
       );
+
+      await userCredential.user!
+          .updateDisplayName(userNameInputController.text);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         debugPrint('The password provided is too weak.');

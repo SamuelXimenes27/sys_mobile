@@ -26,5 +26,9 @@ class AppModule extends Module {
       RoutesConst.register,
       module: RegisterModule(),
     ),
+    ModuleRoute(
+      RoutesConst.home,
+      module: HomeModule(),
+    ),
   ];
 }
