@@ -16,7 +16,7 @@ abstract class HomeStoreBase with Store {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
         log('User is currently signed out!');
-        Navigator.pushNamed(context, RoutesConst.login);
+        Navigator.pushReplacementNamed(context, RoutesConst.login);
       } else {
         log('User is signed in!');
       }
