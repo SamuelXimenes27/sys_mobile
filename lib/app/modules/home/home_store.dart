@@ -11,6 +11,17 @@ part 'home_store.g.dart';
 class HomeStore = HomeStoreBase with _$HomeStore;
 
 abstract class HomeStoreBase with Store {
+  @observable
+  int selectedIndex = 0;
+
+  @observable
+  late TabController tabController;
+
+  @action
+  void onItemTapped(int index) {
+    selectedIndex = index;
+  }
+
   @action
   checkIsLogged(context) {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {

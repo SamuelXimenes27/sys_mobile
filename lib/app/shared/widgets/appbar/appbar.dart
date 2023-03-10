@@ -3,14 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 
 class DefaultAppBar extends StatelessWidget with PreferredSizeWidget {
-  const DefaultAppBar({Key? key}) : super(key: key);
+  PreferredSize tabBar;
+  DefaultAppBar({
+    Key? key,
+    required this.tabBar,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        toolbarHeight: 148,
-        backgroundColor: const Color(0xff3B66A4),
-        title: const ListTileAppBar());
+      toolbarHeight: 148,
+      backgroundColor: const Color(0xff3B66A4),
+      title: const ListTileAppBar(),
+      bottom: tabBar,
+    );
   }
 
   @override
@@ -58,16 +64,14 @@ class _ListTileAppBarState extends State<ListTileAppBar> {
       ),
       contentPadding: const EdgeInsets.only(right: 0),
       trailing: const CircleAvatar(
-        // backgroundImage: NetworkImage("assets/img/police.png"),
         backgroundColor: Colors.white,
+        radius: 30,
         child: Image(
           color: Color(0xff3B66A4),
           width: 40,
           image: NetworkImage(
               'https://www.shareicon.net/data/128x128/2015/10/20/659128_hat_512x512.png'),
         ),
-        // backgroundColor: Colors.white,
-        radius: 30,
       ),
     );
   }
