@@ -18,11 +18,6 @@ abstract class HomeStoreBase with Store {
   late TabController tabController;
 
   @action
-  void onItemTapped(int index) {
-    selectedIndex = index;
-  }
-
-  @action
   checkIsLogged(context) {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {

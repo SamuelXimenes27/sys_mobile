@@ -30,6 +30,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
+    void selectItemNavigationBar(int index) {
+      setState(() {
+        store.selectedIndex = index;
+      });
+    }
+
     TabBar tabBar = TabBar(
       unselectedLabelColor: const Color(0xff3B66A4),
       indicatorColor: const Color(0xff49BEB7),
@@ -68,6 +74,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ],
         ),
       ),
+      const Scaffold(
+        body: Center(
+          child: Text('data'),
+        ),
+      )
     ];
 
     return MaterialApp(
@@ -81,7 +92,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 preferredSize: const Size(0, 0),
                 child: ColoredBox(
                   color: Colors.white,
-                  child: tabBar,
+                  child: store.selectedIndex == 0 ? tabBar : null,
                 ),
               ),
             ),
@@ -127,7 +138,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 await FirebaseAuth.instance.signOut();
                 Modular.to.navigate(RoutesConst.login);
               } else {
-                store.onItemTapped(selectedIndex);
+                selectItemNavigationBar(selectedIndex);
               }
             },
           ),
