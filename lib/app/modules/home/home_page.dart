@@ -1,3 +1,4 @@
+import 'package:design_leveling/app/modules/home/components/mapTabPage.dart';
 import 'package:design_leveling/app/modules/home/home_store.dart';
 import 'package:design_leveling/app/shared/constants/routes_const.dart';
 import 'package:design_leveling/app/shared/widgets/appbar/appbar.dart';
@@ -74,11 +75,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ],
         ),
       ),
-      const Scaffold(
-        body: Center(
-          child: Text('data'),
-        ),
-      )
+      const MapTabPage()
     ];
 
     return MaterialApp(

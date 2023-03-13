@@ -23,6 +23,8 @@ dependencies:
   json_annotation: ^4.8.0
   firebase_core: ^2.7.1
   firebase_auth: ^4.2.10
+  geolocator: ^9.0.2
+  google_maps_flutter: ^2.2.5
 
 dev_dependencies:
   flutter_test:
