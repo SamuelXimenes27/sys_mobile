@@ -43,6 +43,23 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     });
   }
 
+  late final _$userNameInputControllerAtom = Atom(
+      name: '_RegisterStoreBase.userNameInputController', context: context);
+
+  @override
+  TextEditingController get userNameInputController {
+    _$userNameInputControllerAtom.reportRead();
+    return super.userNameInputController;
+  }
+
+  @override
+  set userNameInputController(TextEditingController value) {
+    _$userNameInputControllerAtom
+        .reportWrite(value, super.userNameInputController, () {
+      super.userNameInputController = value;
+    });
+  }
+
   late final _$confirmPasswordInputControllerAtom = Atom(
       name: '_RegisterStoreBase.confirmPasswordInputController',
       context: context);
@@ -138,6 +155,7 @@ mixin _$RegisterStore on _RegisterStoreBase, Store {
     return '''
 emailInputController: ${emailInputController},
 passwordInputController: ${passwordInputController},
+userNameInputController: ${userNameInputController},
 confirmPasswordInputController: ${confirmPasswordInputController},
 keyRegisterForm: ${keyRegisterForm},
 isObscure: ${isObscure},

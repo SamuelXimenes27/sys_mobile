@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:design_leveling/app/modules/home/components/person_search_details_page.dart';
+import 'package:design_leveling/app/shared/constants/routes_const.dart';
 import 'package:design_leveling/app/shared/constants/string_const.dart';
 import 'package:design_leveling/app/shared/widgets/buttons/button.dart';
 import 'package:design_leveling/app/shared/widgets/inputs/datepicker.dart';
@@ -105,13 +107,17 @@ class _PersonTabPageState extends State<PersonTabPage> {
                 icone: Icons.person,
                 onTap: () {
                   if (store.personFormKey.currentState!.validate()) {
-                    log(store.selectedDocType.toString());
-                    log(store.docNumberController.text);
-                    log(store.personNameController.text);
-                    log(store.personMothersNameController.text);
-                    log(store.datePickerController.text);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Processing Data')),
+                    store.searchByPersonName(store.personNameController.text);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => PersonSearchDetailsModal(
+                          name: store.personNameController.text,
+                          typeDoc: store.selectedDocType,
+                          docNumber: store.docNumberController.text,
+                          motherName: store.personMothersNameController.text,
+                          birthday: store.datePickerController.text,
+                        ),
+                      ),
                     );
                   }
                 },

@@ -15,6 +15,7 @@ class StringConst {
   static const registerComplete = "Cadastro feito com sucesso";
 
   // Person Page
+  static const typeDoc = 'Tipo de documento';
   static const docNumber = "Número do documento";
   static const personName = "Nome";
   static const personMotherName = "Nome da Mãe";
