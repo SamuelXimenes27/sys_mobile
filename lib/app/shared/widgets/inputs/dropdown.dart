@@ -11,7 +11,7 @@ class CustomDropdown extends StatelessWidget {
     required this.width,
   }) : super(key: key);
 
-  final Object? valueSelected;
+  final String? valueSelected;
   final Function(Object?)? onChanged;
   final Function(Object?)? onSaved;
   final List<String> dropdownValue;

@@ -57,6 +57,9 @@ abstract class HomeStoreBase with Store {
   List<String> typeDoc = ['CPF', 'RG'];
 
   @observable
+  String? selectedDocType = 'CPF';
+
+  @observable
   TextEditingController docNumberController = TextEditingController();
 
   @observable

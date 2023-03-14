@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.onTap,
     this.controller,
+    this.hasValidation = true,
   }) : super(key: key);
 
   final String? hintText;
@@ -17,6 +18,7 @@ class CustomTextField extends StatelessWidget {
   final suffixIcon;
   final Function()? onTap;
   final TextEditingController? controller;
+  final bool hasValidation;
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +37,12 @@ class CustomTextField extends StatelessWidget {
           suffixIcon: suffixIcon,
         ),
         validator: (value) {
-          if (value!.isEmpty) {
-            return "Esse campo não pode estar vazio!";
+          if (hasValidation == true) {
+            if (value!.isEmpty) {
+              return "Esse campo não pode estar vazio!";
+            }
+            return null;
           }
-          return null;
         },
       ),
     );
