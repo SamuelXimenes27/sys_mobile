@@ -1,5 +1,6 @@
 import 'package:design_leveling/app/modules/home/components/map_tab_page.dart';
 import 'package:design_leveling/app/modules/home/components/person_tab_page.dart';
+import 'package:design_leveling/app/modules/home/components/vehicle_tab_page.dart';
 import 'package:design_leveling/app/modules/home/home_store.dart';
 import 'package:design_leveling/app/shared/constants/routes_const.dart';
 import 'package:design_leveling/app/shared/widgets/appbar/appbar.dart';
@@ -65,10 +66,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               child: PersonTabPage(),
             ),
             Tab(
-              child: Scaffold(
-                backgroundColor: Colors.red,
-                body: Text('tab2'),
-              ),
+              child: VehicleTabPage(),
             ),
           ],
         ),

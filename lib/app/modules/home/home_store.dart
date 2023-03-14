@@ -71,6 +71,19 @@ abstract class HomeStoreBase with Store {
   @observable
   TextEditingController datePickerController = TextEditingController();
 
+  // Vehicle Page Variables
+  @observable
+  var vehicleFormKey = GlobalKey<FormState>();
+
+  @observable
+  List<String> typeDocVehicle = ['Placa', 'Chassi'];
+
+  @observable
+  String? selectedDocTypeVehicle = 'Placa';
+
+  @observable
+  TextEditingController docVehicleNumberController = TextEditingController();
+
   @action
   checkIsLogged(context) {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
