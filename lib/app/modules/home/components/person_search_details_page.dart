@@ -57,6 +57,7 @@ class _PersonSearchDetailsModalState extends State<PersonSearchDetailsModal> {
             color: Color(0xffffffff),
           ),
           onPressed: () {
+            store.clearInputs(context);
             Navigator.pop(context);
           },
         ),

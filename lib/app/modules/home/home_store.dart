@@ -311,6 +311,15 @@ abstract class HomeStoreBase with Store {
       }
     }
   }
+
+  @action
+  clearInputs(context) {
+    FocusScope.of(context).unfocus();
+    docNumberController.clear();
+    personNameController.clear();
+    personMothersNameController.clear();
+    datePickerController.clear();
+  }
 }
 
 enum SearchState { loading, error, hasData }
