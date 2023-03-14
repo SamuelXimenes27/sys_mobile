@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:design_leveling/app/modules/home/components/vehicle_search_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -70,10 +71,26 @@ class _VehicleTabPageState extends State<VehicleTabPage> {
                 icone: Icons.person,
                 onTap: () {
                   if (store.vehicleFormKey.currentState!.validate()) {
-                    log(store.selectedDocTypeVehicle.toString());
-                    log(store.docVehicleNumberController.text);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Processing Data')),
+                    store.searchByDocNumberVehicle(
+                        store.docVehicleNumberController.text,
+                        store.selectedDocTypeVehicle!);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => VehicleSearchDetailsPage(
+                          ownerName: store.ownerName,
+                          vehicleType: store.vehicleType,
+                          model: store.model,
+                          brand: store.brand,
+                          plate: store.plate,
+                          chassi: store.chassi,
+                          renavam: store.renavam,
+                          yearFab: store.yearFab,
+                          vehicleColor: store.vehicleColor,
+                          mercosulPlate: store.mercosulPlate,
+                          numberOfAxles: store.numberOfAxles,
+                          cargoCapacity: store.cargoCapacity,
+                        ),
+                      ),
                     );
                   }
                 },

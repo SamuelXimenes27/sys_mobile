@@ -24,6 +24,26 @@ class StringConst {
   static const consult = "Consultar";
   static const physicalPerson = "[Pessoa Física]";
 
+  // Vehicle Search Page
+  static const vehicleType = "Tipo de Veículo";
+  static const brand = "Marca";
+  static const model = "Modelo";
+  static const plate = "Placa";
+  static const chassi = "Chassi";
+  static const renavam = "Renavam";
+  static const yearFab = "Ano de Fabricação";
+  static const vehicleColor = "Cor do Veículo";
+  static const mercosulPlate = "Placa do Mercosul";
+  static const ownerName = "Nome do Propietário";
+  static const numberOfAxles = "Número de Eixos";
+  static const cargoCapacity = "Capacidade de Carga";
+
+  // Search Pages
+  static const personSearch = 'Pesquisa por Pessoa';
+  static const vehicleSearch = 'Pesquisa por Veículo';
+
+  static const back = 'Voltar';
+
   static const processingData = "Processando dados...";
 
   // Errors
@@ -34,4 +54,6 @@ class StringConst {
   static const emailAlreadyUsed = "O email já é cadastrado";
   static const emailDoesNotExist = "Este email não está cadastrado";
   static const wrongPassword = "A senha está errada!";
+  static const errorOnSearch =
+      'Ocorreu um erro ao buscar os dados, clique abaixo para voltar';
 }

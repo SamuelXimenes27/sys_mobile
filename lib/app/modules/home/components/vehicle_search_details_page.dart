@@ -8,28 +8,42 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../../shared/widgets/buttons/elevated_button.dart';
 import '../home_store.dart';
 
-class PersonSearchDetailsPage extends StatefulWidget {
-  final String? name;
-  final String? typeDoc;
-  final String? docNumber;
-  final String? motherName;
-  final String? birthday;
+class VehicleSearchDetailsPage extends StatefulWidget {
+  final String? ownerName;
+  final String? vehicleType;
+  final String? model;
+  final String? brand;
+  final String? plate;
+  final String? chassi;
+  final String? renavam;
+  final String? yearFab;
+  final String? vehicleColor;
+  final String? mercosulPlate;
+  final String? numberOfAxles;
+  final String? cargoCapacity;
 
-  const PersonSearchDetailsPage({
+  const VehicleSearchDetailsPage({
     super.key,
-    required this.name,
-    required this.birthday,
-    required this.docNumber,
-    required this.motherName,
-    required this.typeDoc,
+    required this.ownerName,
+    required this.vehicleType,
+    required this.model,
+    required this.brand,
+    required this.plate,
+    required this.chassi,
+    required this.renavam,
+    required this.yearFab,
+    required this.vehicleColor,
+    required this.mercosulPlate,
+    required this.numberOfAxles,
+    required this.cargoCapacity,
   });
 
   @override
-  State<PersonSearchDetailsPage> createState() =>
-      _PersonSearchDetailsPageState();
+  State<VehicleSearchDetailsPage> createState() =>
+      _VehicleSearchDetailsPageState();
 }
 
-class _PersonSearchDetailsPageState extends State<PersonSearchDetailsPage> {
+class _VehicleSearchDetailsPageState extends State<VehicleSearchDetailsPage> {
   final HomeStore store = Modular.get();
 
   @override
@@ -40,7 +54,7 @@ class _PersonSearchDetailsPageState extends State<PersonSearchDetailsPage> {
       appBar: AppBar(
         title: const Center(
           child: Text(
-            StringConst.personSearch,
+            StringConst.vehicleSearch,
             style: TextStyle(color: Colors.white, fontFamily: 'Lexend'),
           ),
         ),
@@ -130,7 +144,7 @@ class _PersonSearchDetailsPageState extends State<PersonSearchDetailsPage> {
                       width: size.width * 1,
                       height: size.height * 0.07,
                       child: Text(
-                        widget.name!,
+                        '${widget.brand!}/${widget.model!}',
                         style: const TextStyle(
                           fontFamily: 'Lexend',
                           fontSize: 32,
@@ -149,13 +163,28 @@ class _PersonSearchDetailsPageState extends State<PersonSearchDetailsPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          informationText(StringConst.typeDoc, widget.typeDoc!),
                           informationText(
-                              StringConst.docNumber, widget.docNumber!),
+                              StringConst.ownerName, widget.ownerName!),
                           informationText(
-                              StringConst.personMotherName, widget.motherName!),
+                              StringConst.vehicleType, widget.vehicleType!),
+                          informationText(StringConst.plate, widget.plate!),
+                          informationText(StringConst.chassi, widget.chassi!),
+                          informationText(StringConst.renavam, widget.renavam!),
+                          informationText(StringConst.yearFab, widget.yearFab!),
                           informationText(
-                              StringConst.birthday, widget.birthday!),
+                              StringConst.vehicleColor, widget.vehicleColor!),
+                          informationText(
+                              StringConst.mercosulPlate,
+                              // ignore: unrelated_type_equality_checks
+                              widget.mercosulPlate! == false ? 'Não' : 'Sim'),
+                          store.numberOfAxles! != ''
+                              ? informationText(StringConst.numberOfAxles,
+                                  widget.numberOfAxles!)
+                              : Container(),
+                          store.cargoCapacity!.isNotEmpty
+                              ? informationText(StringConst.cargoCapacity,
+                                  widget.cargoCapacity!)
+                              : Container()
                         ],
                       ),
                     ),

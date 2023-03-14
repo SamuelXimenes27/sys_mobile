@@ -110,7 +110,7 @@ class _PersonTabPageState extends State<PersonTabPage> {
                     store.searchByPersonName(store.personNameController.text);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => PersonSearchDetailsModal(
+                        builder: (context) => PersonSearchDetailsPage(
                           name: store.personNameController.text,
                           typeDoc: store.selectedDocType,
                           docNumber: store.docNumberController.text,
