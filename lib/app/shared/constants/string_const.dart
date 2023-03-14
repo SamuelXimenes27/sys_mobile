@@ -14,6 +14,15 @@ class StringConst {
   static const makeRegister = "Cadastrar";
   static const registerComplete = "Cadastro feito com sucesso";
 
+  // Person Page
+  static const docNumber = "Número do documento";
+  static const personName = "Nome";
+  static const personMotherName = "Nome da Mãe";
+  static const birthday = 'Data de Nascimento';
+  static const datePicker = "Escolha uma data";
+  static const consult = "Consultar";
+  static const physicalPerson = "[Pessoa Física]";
+
   static const processingData = "Processando dados...";
 
   // Errors

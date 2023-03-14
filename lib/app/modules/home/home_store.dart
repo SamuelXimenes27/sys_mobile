@@ -49,6 +49,25 @@ abstract class HomeStoreBase with Store {
   @observable
   LatLng? center;
 
+  // Person Page Variables
+  @observable
+  var personFormKey = GlobalKey<FormState>();
+
+  @observable
+  List<String> typeDoc = ['CPF', 'RG'];
+
+  @observable
+  TextEditingController docNumberController = TextEditingController();
+
+  @observable
+  TextEditingController personNameController = TextEditingController();
+
+  @observable
+  TextEditingController personMothersNameController = TextEditingController();
+
+  @observable
+  TextEditingController datePickerController = TextEditingController();
+
   @action
   checkIsLogged(context) {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
