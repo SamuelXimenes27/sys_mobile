@@ -115,11 +115,12 @@ class _PersonSearchDetailsPageState extends State<PersonSearchDetailsPage> {
                       width: size.width * 1,
                       height: size.height * 0.2,
                       child: Container(
-                        width: 300.0,
-                        height: 300.0,
                         decoration: const BoxDecoration(
-                          color: Colors.grey,
+                          color: ColorsConst.neutral300,
                           shape: BoxShape.circle,
+                        ),
+                        child: Image.asset(
+                          'assets/img/user_icon.png',
                         ),
                       ),
                     ),
