@@ -9,33 +9,8 @@ import '../../../shared/widgets/buttons/elevated_button.dart';
 import '../home_store.dart';
 
 class VehicleSearchDetailsPage extends StatefulWidget {
-  final String? ownerName;
-  final String? vehicleType;
-  final String? model;
-  final String? brand;
-  final String? plate;
-  final String? chassi;
-  final String? renavam;
-  final String? yearFab;
-  final String? vehicleColor;
-  final String? mercosulPlate;
-  final String? numberOfAxles;
-  final String? cargoCapacity;
-
   const VehicleSearchDetailsPage({
     super.key,
-    required this.ownerName,
-    required this.vehicleType,
-    required this.model,
-    required this.brand,
-    required this.plate,
-    required this.chassi,
-    required this.renavam,
-    required this.yearFab,
-    required this.vehicleColor,
-    required this.mercosulPlate,
-    required this.numberOfAxles,
-    required this.cargoCapacity,
   });
 
   @override
@@ -144,7 +119,7 @@ class _VehicleSearchDetailsPageState extends State<VehicleSearchDetailsPage> {
                       width: size.width * 1,
                       height: size.height * 0.07,
                       child: Text(
-                        '${widget.brand!}/${widget.model!}',
+                        '${store.brand!}/${store.model!}',
                         style: const TextStyle(
                           fontFamily: 'Lexend',
                           fontSize: 32,
@@ -164,26 +139,28 @@ class _VehicleSearchDetailsPageState extends State<VehicleSearchDetailsPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           informationText(
-                              StringConst.ownerName, widget.ownerName!),
+                              StringConst.ownerName, store.ownerName!),
                           informationText(
-                              StringConst.vehicleType, widget.vehicleType!),
-                          informationText(StringConst.plate, widget.plate!),
-                          informationText(StringConst.chassi, widget.chassi!),
-                          informationText(StringConst.renavam, widget.renavam!),
-                          informationText(StringConst.yearFab, widget.yearFab!),
+                              StringConst.vehicleType, store.vehicleType!),
+                          informationText(StringConst.plate, store.plate!),
+                          informationText(StringConst.chassi, store.chassi!),
+                          informationText(StringConst.renavam, store.renavam!),
+                          informationText(StringConst.yearFab, store.yearFab!),
                           informationText(
-                              StringConst.vehicleColor, widget.vehicleColor!),
+                              StringConst.vehicleColor, store.vehicleColor!),
                           informationText(
                               StringConst.mercosulPlate,
                               // ignore: unrelated_type_equality_checks
-                              widget.mercosulPlate! == false ? 'Não' : 'Sim'),
-                          store.numberOfAxles! != ''
+                              store.mercosulPlate! == false ? 'Não' : 'Sim'),
+                          store.vehicleType != 'Carro' &&
+                                  store.vehicleType != 'Moto'
                               ? informationText(StringConst.numberOfAxles,
-                                  widget.numberOfAxles!)
+                                  store.numberOfAxles!)
                               : Container(),
-                          store.cargoCapacity!.isNotEmpty
+                          store.vehicleType != 'Carro' &&
+                                  store.vehicleType != 'Moto'
                               ? informationText(StringConst.cargoCapacity,
-                                  widget.cargoCapacity!)
+                                  store.cargoCapacity)
                               : Container()
                         ],
                       ),

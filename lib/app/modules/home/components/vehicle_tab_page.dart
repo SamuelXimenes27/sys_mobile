@@ -76,20 +76,7 @@ class _VehicleTabPageState extends State<VehicleTabPage> {
                         store.selectedDocTypeVehicle!);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => VehicleSearchDetailsPage(
-                          ownerName: store.ownerName,
-                          vehicleType: store.vehicleType,
-                          model: store.model,
-                          brand: store.brand,
-                          plate: store.plate,
-                          chassi: store.chassi,
-                          renavam: store.renavam,
-                          yearFab: store.yearFab,
-                          vehicleColor: store.vehicleColor,
-                          mercosulPlate: store.mercosulPlate,
-                          numberOfAxles: store.numberOfAxles,
-                          cargoCapacity: store.cargoCapacity,
-                        ),
+                        builder: (context) => const VehicleSearchDetailsPage(),
                       ),
                     );
                   }

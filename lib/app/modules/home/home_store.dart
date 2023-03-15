@@ -122,7 +122,7 @@ abstract class HomeStoreBase with Store {
   String? numberOfAxles = '';
 
   @observable
-  String? cargoCapacity = '';
+  String cargoCapacity = '';
 
   // Mock data
   Map<dynamic, Map> mockDataVehicles = {
@@ -161,6 +161,8 @@ abstract class HomeStoreBase with Store {
       'color': 'branco',
       'is_new_plate': true,
       'owner_name': 'Pedro Henrique',
+      'cargo_capacity': '35 toneladas',
+      'number_of_axles': 2,
     },
     3: {
       'vehicle_type': 'ônibus',
@@ -173,6 +175,8 @@ abstract class HomeStoreBase with Store {
       'color': 'azul',
       'is_new_plate': false,
       'owner_name': 'Maria Silva',
+      'cargo_capacity': '15 toneladas',
+      'number_of_axles': 2,
     },
     4: {
       'vehicle_type': 'Moto',
