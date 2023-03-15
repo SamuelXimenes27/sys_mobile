@@ -107,8 +107,20 @@ class _VehicleSearchDetailsPageState extends State<VehicleSearchDetailsPage> {
                         width: 300.0,
                         height: 300.0,
                         decoration: const BoxDecoration(
-                          color: Colors.grey,
+                          color: ColorsConst.neutral300,
                           shape: BoxShape.circle,
+                        ),
+                        child: Image(
+                          fit: BoxFit.contain,
+                          image: AssetImage(
+                            store.vehicleType == 'Caminhão'
+                                ? 'assets/img/truck_icon.png'
+                                : store.vehicleType == 'Carro'
+                                    ? 'assets/img/car_icon.png'
+                                    : store.vehicleType == 'Moto'
+                                        ? 'assets/img/motorbike_icon.png'
+                                        : 'assets/img/bus_icon.png',
+                          ),
                         ),
                       ),
                     ),
