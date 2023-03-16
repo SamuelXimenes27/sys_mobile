@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:design_leveling/app/modules/home/components/person_search_details_page.dart';
 import 'package:design_leveling/app/shared/constants/routes_const.dart';
 import 'package:design_leveling/app/shared/constants/string_const.dart';
+import 'package:design_leveling/app/shared/models/person_model.dart';
 import 'package:design_leveling/app/shared/widgets/buttons/button.dart';
 import 'package:design_leveling/app/shared/widgets/inputs/datepicker.dart';
 import 'package:design_leveling/app/shared/widgets/inputs/dropdown.dart';
@@ -10,6 +11,7 @@ import 'package:design_leveling/app/shared/widgets/inputs/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../shared/db/database.dart';
 import '../home_store.dart';
 
 class PersonTabPage extends StatefulWidget {
@@ -105,21 +107,32 @@ class _PersonTabPageState extends State<PersonTabPage> {
                 title: StringConst.consult,
                 subtitle: StringConst.physicalPerson.toUpperCase(),
                 icone: Icons.person,
-                onTap: () {
-                  if (store.personFormKey.currentState!.validate()) {
-                    store.searchByPersonName(store.personNameController.text);
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => PersonSearchDetailsPage(
-                          name: store.personNameController.text,
-                          typeDoc: store.selectedDocType,
-                          docNumber: store.docNumberController.text,
-                          motherName: store.personMothersNameController.text,
-                          birthday: store.datePickerController.text,
-                        ),
-                      ),
-                    );
-                  }
+                onTap: () async {
+                  // if (store.personFormKey.currentState!.validate()) {
+                  //   store.searchByPersonName(store.personNameController.text);
+                  //   Navigator.of(context).push(
+                  //     MaterialPageRoute(
+                  //       builder: (context) => PersonSearchDetailsPage(
+                  //         name: store.personNameController.text,
+                  //         typeDoc: store.selectedDocType,
+                  //         docNumber: store.docNumberController.text,
+                  //         motherName: store.personMothersNameController.text,
+                  //         birthday: store.datePickerController.text,
+                  //       ),
+                  //     ),
+                  //   );
+                  // }
+                  var dataForDB = Person(
+                    birthday: '27/10/2000',
+                    motherName: 'Juraci Sampaio',
+                    name: 'Eder Ferreira',
+                    numberDoc: '5454784003',
+                    typeDoc: 'CPF',
+                  );
+
+                  // await DB.instance.newPerson(dataForDB);
+
+                  await DB.instance.getAllPersons();
                 },
               ),
             ],

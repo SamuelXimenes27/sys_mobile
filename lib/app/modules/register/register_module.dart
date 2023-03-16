@@ -1,5 +1,5 @@
-import 'package:design_leveling/app//register/register_page.dart';
-import 'package:design_leveling/app//register/register_store.dart';
+import 'package:design_leveling/app/modules/register/register_page.dart';
+import 'package:design_leveling/app/modules/register/register_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class RegisterModule extends Module {

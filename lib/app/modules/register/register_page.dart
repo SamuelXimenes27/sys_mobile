@@ -1,9 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:design_leveling/app//register/register_store.dart';
+import 'package:design_leveling/app/modules/register/register_store.dart';
 import 'package:flutter/material.dart';
 
-import '../shared/constants/colors_const.dart';
-import '../shared/constants/string_const.dart';
+import '../../shared/constants/colors_const.dart';
+import '../../shared/constants/string_const.dart';
 
 class RegisterPage extends StatefulWidget {
   final String title;
